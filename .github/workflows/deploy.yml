@@ -93,12 +93,12 @@ jobs:
       - name: Criar Inventário Ansible
         run: |
           echo "[vm]" > inventory
-          echo "${{ env.PUBLIC_IP }} ansible_user=azureuser ansible_password=${{ secrets.ADMIN_PASSWORD }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory
+          echo "${{ env.PUBLIC_IP }} ansible_user=azureuser ansible_password=${{ secrets.ADMIN_PASSWORD_SIMPLE }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory
 
       - name: Executar Playbook Ansible
         run: |
           export ANSIBLE_HOST_KEY_CHECKING=False
-          ansible-playbook -i inventory ansible/playbook.yml --extra-vars "ansible_sudo_pass=${{ secrets.ADMIN_PASSWORD }}"
+          ansible-playbook -i inventory ansible/playbook.yml --extra-vars "ansible_sudo_pass=${{ secrets.ADMIN_PASSWORD_SIMPLE }}"
 
   post-tests:
     if: ${{ github.event.inputs.destroy == 'false' }}
