@@ -36,7 +36,7 @@ jobs:
           terraform init
           terraform fmt -check
           terraform validate
-          terraform plan -out=tfplan
+          terraform plan -out=tfplan -input=false
 
   deploy:
     if: ${{ github.event.inputs.destroy == 'false' }}
