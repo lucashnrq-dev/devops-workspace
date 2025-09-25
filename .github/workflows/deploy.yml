@@ -97,6 +97,7 @@ jobs:
 
       - name: Executar Playbook Ansible
         run: |
+          export ANSIBLE_HOST_KEY_CHECKING=False
           ansible-playbook -i inventory ansible/playbook.yml --extra-vars "ansible_sudo_pass=${{ secrets.ADMIN_PASSWORD }}"
 
   post-tests:
