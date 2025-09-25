@@ -93,7 +93,7 @@ jobs:
       - name: Criar Inventário Ansible
         run: |
           echo "[vm]" > inventory
-          echo "${{ env.PUBLIC_IP }} ansible_user=${{ env.ADMIN_USERNAME }} ansible_password=${{ secrets.ADMIN_PASSWORD }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory
+          echo "${{ env.PUBLIC_IP }} ansible_user=azureuser ansible_password=${{ secrets.ADMIN_PASSWORD }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory
 
       - name: Executar Playbook Ansible
         run: |
